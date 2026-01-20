@@ -181,8 +181,8 @@
                 <label>Tipo Empresa:</label>
                 <select id="tipoPersona">
                     <option value="">Seleccione</option>
-                    <option value="5800">Persona Natural</option>
-                    <option value="11600">Persona Jurídica</option>
+                    <option value="6100">Persona Natural</option>
+                    <option value="12100">Persona Jurídica</option>
                 </select>
             </div>
 
@@ -199,7 +199,7 @@
                 <br>
                 <label>Jurisdicción Establecimiento :</label>
                 <select id="tipoNegocio">
-                    <option value="">Seleccione</option>
+                    <option value="0">Seleccione</option>
                     <option value="misma">Dentro / Misma</option>
                     <option value="diferente">Fuera / Diferente</option>
                 </select>
@@ -282,7 +282,7 @@
             const valorFormulario = 8500;
             let tarifa = 0, porcentaje = 0, tarifaEstablecimiento = 0, renovacionCorr=0;
             
-            if (isNaN(activos) ||activos <= 0) {
+            if (isNaN(activos) ||activos <0) {
                 alert("Por favor ingrese un valor válido para los activos.");
                 return;
             }
@@ -390,6 +390,7 @@ function limpiarValorFormateado() {
     </script>
 </body>
 </html>
+
 
 
 
