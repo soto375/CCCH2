@@ -62,8 +62,7 @@
             border: none;
             cursor: pointer;
             font-weight: bold;
-        }
-        #limpiar:hover {
+        }#limpiar:hover {
              background-color: #b02a37; /* Rojo oscuro */
         }
         .table-container {
@@ -85,10 +84,11 @@
             background-color: #007BFF;
             color: white;
         }.pago-total {
-        font-weight: bold;
-        font-size: 1.2em; /* Tamaño más grande para destacar */
-        color: #d9534f; /* Color rojo para resaltar */
-    }
+            font-weight: bold;
+            font-size: 1.2em; /* Tamaño más grande para destacar */
+            color: #d9534f; /* Color rojo para resaltar */
+        }
+
 
     
     /* Header */
@@ -184,8 +184,8 @@
         <form id="calculationForm">
             <div class="form-group">
                 <label for="activos">Activos:</label>
-                  <input type="number" min="1" id="activos" placeholder="Ingrese los activos" required>
-                  <div id="activosFormateados" style="margin-top: 5px; font-weight: bold; color: #007BFF; font-size:1.5em ; "></div>
+                <input type="number" min="1" id="activos" placeholder="Ingrese los activos" required>
+                <div id="activosFormateados" style="margin-top: 5px; font-weight: bold; color: #007BFF; font-size:1.5em ; "></div>
             </div>
 
             <div class="form-group">
@@ -210,7 +210,7 @@
                 <br>
                 <label>Jurisdicción Establecimiento :</label>
                 <select id="tipoNegocio">
-                    <option value="0">Seleccione</option>
+                    <option value="">Seleccione</option>
                     <option value="misma">Dentro / Misma</option>
                     <option value="diferente">Fuera / Diferente</option>
                 </select>
@@ -218,6 +218,7 @@
 
             <button type="button" id="calcular">🧮Calcular</button>
             <button type="button" id="limpiar">🗑️ Limpiar</button>
+
         </form>
 
         <div class="table-container">
@@ -263,10 +264,8 @@
         <p>
             Visítanos en nuestras oficinas en Quibdó e Istmina. 
             <br>
-            <a href="https://camarachoco.org.co/">Visita nuestra página oficial</a>  
-        </p>
-         <p>
-            <a>Diseñado y elaborado por Elkin Daniel Cuesta M.</a>
+            <a href="#contacto">Contáctanos</a> | 
+            <a href="#privacidad">Política de Privacidad</a>
         </p>
     </footer>
 
@@ -294,14 +293,14 @@
             const valorFormulario = 8500;
             let tarifa = 0, porcentaje = 0, tarifaEstablecimiento = 0, renovacionCorr=0;
             
-            if (isNaN(activos) ||activos <0) {
+            if (isNaN(activos) ||activos < 0) {
                 alert("Por favor ingrese un valor válido para los activos.");
                 return;
             }
             if (document.getElementById('rbSi').checked) {
                 cantidadNegocio = parseInt(document.getElementById('cantidadNegocios').value);
                 if (isNaN(cantidadNegocio) || cantidadNegocio <= 0) {
-                    alert("La cantidad de negocios debe ser mayor a 0.");
+                    alert("La cantidad debe ser mayor a 0.");
                     return;
                 }
             }
@@ -397,31 +396,27 @@ function limpiarValorFormateado() {
     formatoDiv.textContent = ''; // Limpiar el recuadro al enfocar
 }
      
+        const limpiarButton = document.getElementById('limpiar');
 
-const limpiarButton = document.getElementById('limpiar');
+        limpiarButton.addEventListener('click', () => {
+            // Limpiar formulario
+            document.getElementById('calculationForm').reset();
 
-limpiarButton.addEventListener('click', () => {
-    // Limpiar formulario
-    document.getElementById('calculationForm').reset();
+            // Ocultar opciones de negocios
+            negocioOptions.style.display = 'none';
 
-    // Ocultar opciones de negocios
-    negocioOptions.style.display = 'none';
+            // Limpiar valores formateados
+            document.getElementById('activosFormateados').textContent = '';
 
-    // Limpiar valores formateados
-    document.getElementById('activosFormateados').textContent = '';
+            // Limpiar tabla de resultados
+            document.getElementById('formularioOutput').innerText = '-';
+            document.getElementById('pagarSinOutput').innerText = '-';
+            document.getElementById('tipoPersonaOutput').innerText = '-';
+            document.getElementById('pagoNegocioOutput').innerText = '-';
+            document.getElementById('pagoTotalOutput').innerText = '-';
+        });
 
-    // Limpiar tabla de resultados
-    document.getElementById('formularioOutput').innerText = '-';
-    document.getElementById('pagarSinOutput').innerText = '-';
-    document.getElementById('tipoPersonaOutput').innerText = '-';
-    document.getElementById('pagoNegocioOutput').innerText = '-';
-    document.getElementById('pagoTotalOutput').innerText = '-';
-});
+
     </script>
 </body>
 </html>
-
-
-
-
-
