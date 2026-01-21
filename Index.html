@@ -285,7 +285,7 @@
 
         calcularButton.addEventListener('click', () => 
         {
-            const activos = parseFloat(document.getElementById('activos').value) || 0;
+            const activos = parseFloat(document.getElementById('activos').value);
             const tipoPersona = parseFloat(document.getElementById('tipoPersona').value) || 0;
             const tieneNegocios = rbSi.checked;
             const cantidadNegocios = parseInt(document.getElementById('cantidadNegocios').value) || 0;
@@ -420,3 +420,4 @@ function limpiarValorFormateado() {
     </script>
 </body>
 </html>
+
